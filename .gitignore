@@ -1,0 +1,19 @@
+cat > .gitignore << 'EOF'
+# Build Maven
+target/
+
+# IDE & système
+.idea/
+*.iml
+.DS_Store
+
+# Logs et fichiers temporaires
+*.log
+*.tmp
+
+# Docker (plus tard)
+*.local.env
+
+# Node/Front (au cas où on ajoute des assets un jour)
+node_modules/
+EOF
