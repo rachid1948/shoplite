@@ -15,4 +15,31 @@
     <packaging>jar</packaging>
     <name>ShopLite :: Gateway</name>
     <description>Façade HTTP (point d’entrée unique)</description>
+
+    <dependencies>
+        <!-- Spring Cloud Gateway (version gérée par le BOM Spring Cloud du parent) -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.4.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
 </project>
