@@ -3,6 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <artifactId>inventory-api</artifactId>
+    <packaging>jar</packaging>
+    <name>ShopLite :: Inventory API</name>
+    <description>Service stock (produits + quantités)</description>
     <!-- Hérite du parent racine -->
     <parent>
         <groupId>com.shoplite</groupId>
@@ -11,8 +15,34 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>inventory-api</artifactId>
-    <packaging>jar</packaging>
-    <name>ShopLite :: Inventory API</name>
-    <description>Service stock (produits + quantités)</description>
+    <dependencies>
+        <!-- API REST minimale -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- (rien d’autre pour l’instant) -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Permet de repackage le JAR en JAR exécutable (app Spring Boot) -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.4.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+
+
 </project>

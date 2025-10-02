@@ -15,4 +15,30 @@
     <packaging>jar</packaging>
     <name>ShopLite :: Order API</name>
     <description>Service commandes (création, listing, consultation)</description>
+
+    <dependencies>
+        <!-- Apporte SpringApplication, @SpringBootApplication, MVC, Tomcat -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.4.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
