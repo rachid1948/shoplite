@@ -2,6 +2,8 @@ package com.shoplite.order.web;
 
 import com.shoplite.order.domain.Order;
 import com.shoplite.order.dto.CreateOrderRequest;
+import com.shoplite.order.gateway.InventoryInsufficientStockException;
+import com.shoplite.order.gateway.InventoryProductNotFoundException;
 import com.shoplite.order.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -62,6 +64,19 @@ public class OrderController {
                                 "order not found: " + id
                         )
                 );
+    }
+
+    // --- gestion erreurs inventory ---
+    @ExceptionHandler(InventoryProductNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleProductNotFound(InventoryProductNotFoundException ex) {
+        return ex.getMessage();
+    }
+
+    @ExceptionHandler(InventoryInsufficientStockException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public String handleInsufficientStock(InventoryInsufficientStockException ex) {
+        return ex.getMessage();
     }
 
 
